@@ -7,8 +7,11 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 	
+	<!-- Configuracion del paquete de los controladores -->
 	<context:component-scan base-package="net.cinemaApp.app.controller" />
+	<!-- Anotaciones de MVC -->
 	<mvc:annotation-driven />
+	<!-- Configuracion de la carpeta y terminacion de los archivos de vista -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
 			<value>/WEB-INF/views/</value>
