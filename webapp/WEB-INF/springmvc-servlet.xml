@@ -20,5 +20,6 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
-
+	<!-- Archivos estaticos -->
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 </beans>

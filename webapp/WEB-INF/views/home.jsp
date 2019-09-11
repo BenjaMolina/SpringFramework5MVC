@@ -3,6 +3,9 @@
 
 <!-- JSTL -->
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!-- Archivos estaticos -->
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<spring:url value="/resources" var="urlPublic" /> <!-- variable -->
 
 <!DOCTYPE html>
 <html>
@@ -27,7 +30,7 @@
 		</ul> --%>
 
 		<div class="panel panel-default">
-			<div class="panel-heading">Lista de Peliculas</div>
+			<!-- <div class="panel-heading">Lista de Peliculas</div> -->
 			<div class="panel-body">
 				<table class="table table-striped table-bordered table-hover">
 					<thead>
@@ -45,10 +48,12 @@
 							<tr>
 								<td>${pelicula.id}</td>
 								<td>${pelicula.titulo}</td>
-								<td>${pelicula.duracion}min</td>
+								<td>${pelicula.duracion} min</td>
 								<td>${pelicula.clasificacion}</td>
 								<td>${pelicula.genero}</td>
-								<td>${pelicula.imagen}</td>
+								<td>
+									<img width="80" alt="${pelicula.titulo}" src="${urlPublic}/images/${pelicula.imagen}">
+								</td>
 								<td>${pelicula.fechaEstreno}</td>
 								<td>${pelicula.estatus}</td>
 							</tr>

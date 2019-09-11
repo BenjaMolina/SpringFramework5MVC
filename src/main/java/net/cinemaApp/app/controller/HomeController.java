@@ -72,6 +72,7 @@ public class HomeController {
 			pelicula2.setClasificacion("B");
 			pelicula2.setGenero("Accion");
 			pelicula2.setFechaEstreno(formatter.parse("05-05-2009"));
+			pelicula2.setImagen("bella.png");
 
 			Pelicula pelicula3 = new Pelicula();
 			pelicula3.setId(3);
@@ -80,6 +81,7 @@ public class HomeController {
 			pelicula3.setClasificacion("B");
 			pelicula3.setGenero("Accion");
 			pelicula3.setFechaEstreno(formatter.parse("05-05-2006"));
+			pelicula3.setImagen("kong.png");
 			
 			lista.add(pelicula1);
 			lista.add(pelicula2);
