@@ -2,7 +2,9 @@
 	pageEncoding="ISO-8859-1"%>
 
 <!-- JSTL -->
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <!-- Lopps,etc -->
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> <!-- dar Formatos -->
+
 <!-- Archivos estaticos -->
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <spring:url value="/resources" var="urlPublic" /> <!-- variable -->
@@ -54,8 +56,21 @@
 								<td>
 									<img width="80" alt="${pelicula.titulo}" src="${urlPublic}/images/${pelicula.imagen}">
 								</td>
-								<td>${pelicula.fechaEstreno}</td>
-								<td>${pelicula.estatus}</td>
+								<td>
+									<fmt:formatDate 
+										value="${pelicula.fechaEstreno}"
+										pattern="dd-MM-yyyy"/>
+								</td>
+								<td>
+									<c:choose>
+										<c:when test="${pelicula.estatus=='Activa'}">
+											<span class="label label-success">ACTIVA</span>
+										</c:when>
+										<c:otherwise>
+											<span class="label label-danger">INACTIVA</span>
+										</c:otherwise>
+									</c:choose>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>

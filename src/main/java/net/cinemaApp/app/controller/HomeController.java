@@ -73,6 +73,7 @@ public class HomeController {
 			pelicula2.setGenero("Accion");
 			pelicula2.setFechaEstreno(formatter.parse("05-05-2009"));
 			pelicula2.setImagen("bella.png");
+			pelicula2.setEstatus("Inactivo");
 
 			Pelicula pelicula3 = new Pelicula();
 			pelicula3.setId(3);
