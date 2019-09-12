@@ -19,12 +19,6 @@ public class HomeController {
 		
 		List<Pelicula> peliculas = getLista();
 		
-//		peliculas.add("Rapidos y furiosos 5");
-//		peliculas.add("Avengers - End Game");
-//		peliculas.add("El aro 2");
-//		peliculas.add("Aliens vs Depredador");
-		
-		
 		model.addAttribute("peliculas", peliculas);
 		
 		return "home";
