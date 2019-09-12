@@ -14,22 +14,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Bienvenido a CineMovies</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
+<link href="${urlPublic}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
 		<h1>Lista de Peliculas</h1>
-
-		<%-- <ul>
-			<c:forEach items="${peliculas}" var="pelicula">
-				<li>${pelicula}</li>
-
-			</c:forEach>
-		</ul> --%>
 
 		<div class="panel panel-default">
 			<!-- <div class="panel-heading">Lista de Peliculas</div> -->
