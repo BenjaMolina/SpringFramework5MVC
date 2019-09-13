@@ -1,6 +1,7 @@
 package net.cinemaApp.app.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,20 +16,24 @@ import net.cinemaApp.app.model.Pelicula;
 @Controller
 public class HomeController {
 	
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+	
 	@RequestMapping(value = "/")
 	public String index(Model model) {
 		
 		List<Pelicula> peliculas = getLista();
 		
 		model.addAttribute("peliculas", peliculas);
+		model.addAttribute("fechaBusqueda", dateFormat.format(new Date()));
 		
 		return "home";
 	}
 
-	@RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
-	public String mostrarDetalle(Model model, @PathVariable("id") int idPelicula) {
+	@RequestMapping(value = "/detail/{id}/{fecha}", method = RequestMethod.GET)
+	public String mostrarDetalle(Model model, @PathVariable("id") int idPelicula, @PathVariable("fecha") String fecha) {
 		
 		System.out.println("Id Pelicula: " + idPelicula);
+		System.out.println("Fecha de Busqueda: " + fecha);
 		
 		String tituloPelicula = "Avengers - End Game";
 		int duracion = 136;
