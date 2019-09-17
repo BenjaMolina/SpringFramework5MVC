@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import net.cinemaApp.app.model.Pelicula;
+import net.cinemaApp.app.util.Utileria;
 
 @Controller
 public class HomeController {
@@ -22,9 +23,11 @@ public class HomeController {
 	@RequestMapping(value = "/")
 	public String index(Model model) {
 		
+		List<String> listaFechas = Utileria.getNextDays(4);
 		List<Pelicula> peliculas = getLista();
 		
 		model.addAttribute("peliculas", peliculas);
+		model.addAttribute("fechas", listaFechas);
 		model.addAttribute("fechaBusqueda", dateFormat.format(new Date()));
 		
 		return "home";
