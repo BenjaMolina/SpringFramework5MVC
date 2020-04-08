@@ -1,9 +1,11 @@
 package net.cinemaApp.app.controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +33,33 @@ public class HomeController {
 		model.addAttribute("fechaBusqueda", dateFormat.format(new Date()));
 		
 		return "home";
+	}
+	
+	@RequestMapping(value="/search", method = RequestMethod.POST)
+	public String buscar(@RequestParam("fecha") String fecha, Model model) {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+		
+		try {
+			final Date searchFecha = formatter.parse(fecha);
+			
+			List<Pelicula> peliculas = getLista().stream()
+					   .filter(p -> p.getFechaEstreno().compareTo(searchFecha) == 0)
+					   .collect(Collectors.toList());
+
+			List<String> listaFechas = Utileria.getNextDays(4);
+			model.addAttribute("peliculas", peliculas);
+			model.addAttribute("fechas", listaFechas);
+			model.addAttribute("fechaBusqueda", fecha);
+									
+								   
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "home";
+		
 	}
 
 //	@RequestMapping(value = "/detail/{id}/{fecha}", method = RequestMethod.GET)
@@ -66,7 +95,7 @@ public class HomeController {
 			pelicula1.setDuracion(120);
 			pelicula1.setClasificacion("B");
 			pelicula1.setGenero("Accion");
-			pelicula1.setFechaEstreno(formatter.parse("05-05-2019"));
+			pelicula1.setFechaEstreno(formatter.parse("7-04-2020"));
 			
 			Pelicula pelicula2 = new Pelicula();
 			pelicula2.setId(2);
@@ -74,7 +103,7 @@ public class HomeController {
 			pelicula2.setDuracion(120);
 			pelicula2.setClasificacion("B");
 			pelicula2.setGenero("Accion");
-			pelicula2.setFechaEstreno(formatter.parse("05-05-2009"));
+			pelicula2.setFechaEstreno(formatter.parse("7-04-2020"));
 			pelicula2.setImagen("bella.png");
 			pelicula2.setEstatus("Inactivo");
 
@@ -84,7 +113,7 @@ public class HomeController {
 			pelicula3.setDuracion(120);
 			pelicula3.setClasificacion("B");
 			pelicula3.setGenero("Accion");
-			pelicula3.setFechaEstreno(formatter.parse("05-05-2006"));
+			pelicula3.setFechaEstreno(formatter.parse("19-09-2019"));
 			pelicula3.setImagen("kong.png");
 			
 			lista.add(pelicula1);
