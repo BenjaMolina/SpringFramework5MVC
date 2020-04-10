@@ -22,6 +22,7 @@
 
       <h3 class="blog-title"><span class="label label-success">Datos de la Noticia</span></h3>
 
+	  
 	  <spring:url value="/noticias/save" var="urlForm"></spring:url>	
       <form action="${urlForm}" method="post">
         <div class="row">         
