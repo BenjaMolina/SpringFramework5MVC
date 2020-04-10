@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import net.cinemaApp.app.model.Noticia;
+
 @Controller
 @RequestMapping("/noticias")
 public class NoticiasController {
@@ -21,7 +23,15 @@ public class NoticiasController {
 				@RequestParam("estatus") String estatus, 
 				@RequestParam("detalle") String detalle) {
 		
-		System.out.println(titulo + " " + estatus + " " + detalle);
+		Noticia noticia = new Noticia();
+		noticia.setTitulo(titulo);
+		noticia.setEstatus(estatus);
+		noticia.setDetalle(detalle);
+		
+		//TODO: Falta guardar a la BD
+		
+		System.out.println(noticia);
+		
 		return "noticias/formNoticias";
 	}
 }
