@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,10 +16,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import net.cinemaApp.app.model.Pelicula;
+import net.cinemaApp.app.service.IPelicula;
 import net.cinemaApp.app.util.Utileria;
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	private IPelicula servicePelicula;  
 	
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 	
@@ -26,7 +31,7 @@ public class HomeController {
 	public String index(Model model) {
 		
 		List<String> listaFechas = Utileria.getNextDays(4);
-		List<Pelicula> peliculas = getLista();
+		List<Pelicula> peliculas = servicePelicula.obtenerTodas();
 		
 		model.addAttribute("peliculas", peliculas);
 		model.addAttribute("fechas", listaFechas);
@@ -42,7 +47,7 @@ public class HomeController {
 		try {
 			final Date searchFecha = formatter.parse(fecha);
 			
-			List<Pelicula> peliculas = getLista().stream()
+			List<Pelicula> peliculas = servicePelicula.obtenerTodas().stream()
 					   .filter(p -> p.getFechaEstreno().compareTo(searchFecha) == 0)
 					   .collect(Collectors.toList());
 
@@ -80,51 +85,6 @@ public class HomeController {
 		model.addAttribute("precio", precioEntrada);
 		
 		return "detalle";
-	}
-	
-	private List<Pelicula> getLista(){
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-		List<Pelicula> lista = null;
-		
-		try {
-			lista = new LinkedList<>();
-			
-			Pelicula pelicula1 = new Pelicula();
-			pelicula1.setId(1);
-			pelicula1.setTitulo("Avengers - End Game");
-			pelicula1.setDuracion(120);
-			pelicula1.setClasificacion("B");
-			pelicula1.setGenero("Accion");
-			pelicula1.setFechaEstreno(formatter.parse("7-04-2020"));
-			
-			Pelicula pelicula2 = new Pelicula();
-			pelicula2.setId(2);
-			pelicula2.setTitulo("El Ilusionista");
-			pelicula2.setDuracion(120);
-			pelicula2.setClasificacion("B");
-			pelicula2.setGenero("Accion");
-			pelicula2.setFechaEstreno(formatter.parse("7-04-2020"));
-			pelicula2.setImagen("bella.png");
-			pelicula2.setEstatus("Inactivo");
-
-			Pelicula pelicula3 = new Pelicula();
-			pelicula3.setId(3);
-			pelicula3.setTitulo("Juego de Tronos");
-			pelicula3.setDuracion(120);
-			pelicula3.setClasificacion("B");
-			pelicula3.setGenero("Accion");
-			pelicula3.setFechaEstreno(formatter.parse("19-09-2019"));
-			pelicula3.setImagen("kong.png");
-			
-			lista.add(pelicula1);
-			lista.add(pelicula2);
-			lista.add(pelicula3);
-			
-		} catch (Exception e) {
-			System.out.println("Error " + e.getMessage());
-		}
-		
-		return lista;
 	}
 
 }

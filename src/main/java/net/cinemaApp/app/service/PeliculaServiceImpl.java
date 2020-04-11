@@ -4,13 +4,17 @@ import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import net.cinemaApp.app.model.Pelicula;
 
+@Service
 public class PeliculaServiceImpl implements IPelicula {
 	
 	private List<Pelicula> lista;
 	
 	public PeliculaServiceImpl() {
+		System.out.println("Se ha creado una instanacia del Servicio Peliculas");
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 		this.lista = null;
 		
