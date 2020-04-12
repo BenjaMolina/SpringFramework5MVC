@@ -6,4 +6,5 @@ import net.cinemaApp.app.model.Pelicula;
 
 public interface IPelicula {
 	List<Pelicula> obtenerTodas();
+	Pelicula getPelicula(int id);
 }

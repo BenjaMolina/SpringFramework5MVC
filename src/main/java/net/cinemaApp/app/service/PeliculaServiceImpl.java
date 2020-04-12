@@ -3,6 +3,7 @@ package net.cinemaApp.app.service;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -60,6 +61,15 @@ public class PeliculaServiceImpl implements IPelicula {
 	@Override
 	public List<Pelicula> obtenerTodas() {		
 		return this.lista;
+	}
+
+	@Override
+	public Pelicula getPelicula(int id) {
+		for (Pelicula pelicula : this.lista) {
+			if(pelicula.getId() == id) return pelicula;
+		}
+		
+		return null;
 	}
 	
 }

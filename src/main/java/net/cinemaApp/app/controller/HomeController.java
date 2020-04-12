@@ -67,22 +67,18 @@ public class HomeController {
 		
 	}
 
-//	@RequestMapping(value = "/detail/{id}/{fecha}", method = RequestMethod.GET)
-	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public String mostrarDetalle(Model model, 
-			@RequestParam(name = "idMovie", required = false) int idPelicula, 
-			@RequestParam("fecha") String fecha) {
+	@RequestMapping(value = "/detail/{id}/{fecha}", method = RequestMethod.GET)
+	public String mostrarDetalle(
+			Model model, 
+			@PathVariable(name = "id") int idPelicula, 
+			@PathVariable("fecha") String fecha) {
 		
 		System.out.println("Id Pelicula: " + idPelicula);
 		System.out.println("Fecha de Busqueda: " + fecha);
 		
-		String tituloPelicula = "Avengers - End Game";
-		int duracion = 136;
-		double precioEntrada = 50;
+		Pelicula pelicula = this.servicePelicula.getPelicula(idPelicula);
 		
-		model.addAttribute("titulo", tituloPelicula);
-		model.addAttribute("duracion", duracion);
-		model.addAttribute("precio", precioEntrada);
+		model.addAttribute("pelicula", pelicula);
 		
 		return "detalle";
 	}
