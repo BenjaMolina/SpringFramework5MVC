@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import net.cinemaApp.app.model.Pelicula;
 import net.cinemaApp.app.service.IPelicula;
@@ -41,7 +42,7 @@ public class PeliculasController {
 	}
 	
 	@PostMapping(value="/save")
-	public String guardar(Pelicula pelicula, BindingResult result, Model model) {
+	public String guardar(Pelicula pelicula, BindingResult result, Model model, RedirectAttributes attributes) {
 		
 		if(result.hasErrors()) {
 			System.out.println("Existieron errores");
@@ -54,7 +55,8 @@ public class PeliculasController {
 		System.out.println(pelicula);
 		servicePelicula.insertar(pelicula);
 		
-		//return "peliculas/formPelicula";
+		attributes.addFlashAttribute("mensaje", "Pelicula agregado con exito");
+		
 		return "redirect:/peliculas/index";
 	}
 	
