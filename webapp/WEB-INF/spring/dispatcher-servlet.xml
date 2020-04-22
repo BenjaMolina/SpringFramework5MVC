@@ -22,4 +22,10 @@
 	</bean>
 	<!-- Archivos estaticos -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
+	
+	<!-- Soporte para archivos -->
+	<bean 
+		id="multipartResolver" 
+		class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+	</bean>
 </beans>
