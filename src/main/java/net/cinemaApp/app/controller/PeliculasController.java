@@ -25,6 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import net.cinemaApp.app.model.Pelicula;
 import net.cinemaApp.app.service.IPelicula;
+import net.cinemaApp.app.util.Utileria;
 
 @Controller
 @RequestMapping(value="/peliculas")
@@ -60,7 +61,7 @@ public class PeliculasController {
 		}
 		
 		if(!multipart.isEmpty()) {
-			String nombreImagen = guardarImagen(multipart,request);
+			String nombreImagen = Utileria.guardarImagen(multipart,request);
 			pelicula.setImagen(nombreImagen);
 		}
 		
@@ -79,26 +80,5 @@ public class PeliculasController {
 	}
 	
 	
-	private String guardarImagen(MultipartFile multipart, HttpServletRequest request) {
-		//Obtenemos el nombre original del archivo
-		String nombreOriginal = multipart.getOriginalFilename();
-		
-		//Obtenemos la ruta absoluta del directorio images
-		//apache-tomcat/webapps/cineapp/resources/images/
-		String rutaFinal = request.getServletContext().getRealPath("/resources/images/");
-		
-		try {
-			//Formamos el nombre del archivo para guardarlo
-			File imageFile = new File(rutaFinal + nombreOriginal);
-			
-			//Guardamos fisicamente el archivo en disco duro
-			multipart.transferTo(imageFile);
-			
-			return nombreOriginal;
-		} catch (IOException e) {
-			System.out.println("Error " + e.getMessage());
-			return null;
-		}
-
-	}
+	
 }
