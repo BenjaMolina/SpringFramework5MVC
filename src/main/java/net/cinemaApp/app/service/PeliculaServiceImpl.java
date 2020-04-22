@@ -71,5 +71,10 @@ public class PeliculaServiceImpl implements IPelicula {
 		
 		return null;
 	}
+
+	@Override
+	public void insertar(Pelicula pelicula) {
+		this.obtenerTodas().add(pelicula);
+	}
 	
 }
