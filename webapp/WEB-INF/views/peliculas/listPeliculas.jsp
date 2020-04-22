@@ -36,6 +36,8 @@
 
       <h3>Listado de Peliculas</h3>
       
+      ${mensaje}
+      
       <a href="create" class="btn btn-success" role="button" title="Nueva Pelicula" >Nueva</a><br><br>
 	
       <div class="table-responsive">

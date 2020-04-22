@@ -41,7 +41,7 @@ public class PeliculasController {
 	}
 	
 	@PostMapping(value="/save")
-	public String guardar(Pelicula pelicula, BindingResult result) {
+	public String guardar(Pelicula pelicula, BindingResult result, Model model) {
 		
 		if(result.hasErrors()) {
 			System.out.println("Existieron errores");
@@ -54,7 +54,8 @@ public class PeliculasController {
 		System.out.println(pelicula);
 		servicePelicula.insertar(pelicula);
 		
-		return "peliculas/formPelicula";
+		//return "peliculas/formPelicula";
+		return "redirect:/peliculas/index";
 	}
 	
 	@InitBinder
