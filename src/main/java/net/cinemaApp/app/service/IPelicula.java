@@ -8,4 +8,5 @@ public interface IPelicula {
 	void insertar(Pelicula pelicula);
 	List<Pelicula> obtenerTodas();
 	Pelicula getPelicula(int id);
+	List<String> buscarGeneros();
 }
