@@ -41,8 +41,8 @@
 							<div class="panel-body">                           
 								<p>
 									Titulo Original : ${pelicula.titulo } <br>
-									Actores :  <br>
-									Director:  <br>                  
+									Actores :  ${pelicula.detalle.actores}<br>
+									Director:  ${pelicula.detalle.director}<br>                  
 									Clasificacion: ${pelicula.clasificacion } <br>
 									Duracion: ${pelicula.duracion } minutos <br>
 									Genero: ${pelicula.genero } <br>                  

@@ -13,6 +13,8 @@ public class Pelicula {
 	private Date fechaEstreno;
 	private String estatus="Activa";
 	
+	private Detalle detalle;
+	
 	public Pelicula() {
 		System.out.println("Constructor de pelicula");
 	}
@@ -66,13 +68,22 @@ public class Pelicula {
 		this.estatus = estatus;
 	}
 	
-	
+	public Detalle getDetalle() {
+		return detalle;
+	}
+
+	public void setDetalle(Detalle detalle) {
+		this.detalle = detalle;
+	}
+
 	@Override
 	public String toString() {
 		return "Pelicula [id=" + id + ", titulo=" + titulo + ", duracion=" + duracion + ", clasificacion="
 				+ clasificacion + ", genero=" + genero + ", imagen=" + imagen + ", fechaEstreno=" + fechaEstreno
-				+ ", estatus=" + estatus + "]";
+				+ ", estatus=" + estatus + ", detalle=" + detalle + "]";
 	}
+
+	
 	
 	
 	
