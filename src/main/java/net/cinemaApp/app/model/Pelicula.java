@@ -6,12 +6,17 @@ public class Pelicula {
 	
 	private int id;
 	private String titulo;
-	private int duracion;
-	private String clasificacion;
-	private String genero;
+	private int duracion = 100; //Valor por defecto con Form Tag Library
+	private String clasificacion = "C"; //Valor por defecto con Form Tag Library
+	private String genero; 
 	private String imagen = "cinema.png";
 	private Date fechaEstreno;
 	private String estatus="Activa";
+	
+	public Pelicula() {
+		System.out.println("Constructor de pelicula");
+	}
+	
 	public int getId() {
 		return id;
 	}

@@ -52,6 +52,7 @@
       	</div>
       </spring:hasBindErrors>
 
+	  ${pelicula}
       <form:form action="${urlForm}" method="POST" enctype="multipart/form-data" modelAttribute="pelicula">
         <div class="row">
           <div class="col-sm-3">
